@@ -3,9 +3,9 @@
 <!-- 
      Stylesheet for Microsoft Word 2007/2008/2010 Bibliography formatting.
      
-     Author(s): Yves Dhondt (yves.dhondt@gmail.com)
+     Author(s): Yves Dhondt (yves.dhondt@gmail.com), Filip Liwiński (https://github.com/filipliwinski)
                
-     Copyright: Copyright (c) 2009 Yves Dhondt
+     Copyright: Copyright (c) 2009 Yves Dhondt; (c) 2019 Filip Liwiński
 
                 Permission is hereby granted, free of charge, to any person obtaining a
                 copy of this software and associated documentation files (the "Software"),
@@ -34,12 +34,12 @@
   <!-- Variable containing all necessary data for a certain style of bibliography. -->
   <xsl:variable name="data">
     <general>
-      <stylename>IEEE - Alphabetical Order*</stylename>
-      <version>2009.05.23</version>
-      <description>An implementation of the IEEE style where the entries are sorted alphabetically in the bibliography.</description>
+      <stylename>IEEE - SGGW</stylename>
+      <version>2019.02.22</version>
+      <description>An implementation of the IEEE style, in compliance with the requirements of the Warsaw University of Life Sciences (SGGW), where the entries are sorted alphabetically in the bibliography.</description>
       <URL></URL>
-      <author>Yves Dhondt (yves.dhondt@gmail.com)</author>
-      <comment>This IEEE style requires the BibWord Extender tool (http://www.codeplex.com/bibliography) to sort the bibliography entries alphabetically.</comment>
+      <author>Yves Dhondt (yves.dhondt@gmail.com); Filip Liwiński (https://github.com/filipliwinski)</author>
+      <comment>This IEEE style requires the BibWord Extender tool (https://github.com/filipliwinski/BibWord/tree/master/source/BibWord/BibWordExtender2) to sort the bibliography entries alphabetically.</comment>
       <display_errors>yes</display_errors>
       <citation_as_link>yes</citation_as_link>
     </general>
@@ -149,7 +149,7 @@
     <citation>
       <openbracket>[</openbracket>
       <closebracket>]</closebracket>
-      <separator>,</separator>
+      <separator>, </separator>
       <source type="Placeholder">
         <format>%Tag%</format>
       </source>
@@ -217,7 +217,7 @@
         <column id="2">
           <halign>left</halign>
           <valign>top</valign>
-          <format>{%Author:1|Editor:2%, }{&lt;i&gt;%Title%&lt;/i&gt;{, %Edition:o% ed.}}{, %Editor:2%}.{ %City|StateProvince|CountryRegion%}{, %StateProvince|CountryRegion%}{, %CountryRegion%}{: %Publisher%}{,{ %Month:s%} %Year%}{, vol. %Volume%}{, %Comments%}.{ [Online]. %URL:l%}</format>
+          <format>{%Author:1|Editor:2%, }{&lt;i&gt;%Title%&lt;/i&gt;{, %Edition:o% ed.}}{, %Editor:2%}.{ %City|StateProvince|CountryRegion%}{, %StateProvince|CountryRegion%}{, %CountryRegion%}{: %Publisher%}{,{ %Month:s%} %Year%}{, vol. %Volume%}{, %Comments%}.{ %URL:l% (ostatni dostęp: %DayAccessed% %MonthAccessed:s% %YearAccessed%)}</format>
         </column>
         <sortkey>{%Author:0|Editor:0%} {%Title:a%} {%Year%}</sortkey>
       </source>
@@ -230,7 +230,7 @@
         <column id="2">
           <halign>left</halign>
           <valign>top</valign>
-          <format>{%Author:1|BookAuthor:1|Editor:2%, }{{"%Title%," in }&lt;i&gt;%BookTitle%&lt;/i&gt;{, %Edition:o% ed.}}{, %Editor:2%}.{ %City|StateProvince|CountryRegion%}{, %StateProvince|CountryRegion%}{, %CountryRegion%}{: %Publisher%}{,{ %Month:s%} %Year%}{, vol. %Volume%}{, ch. %ChapterNumber%}{, %Pages:p. :pp. %}{, %Comments%}.{ [Online]. %URL:l%}</format>
+          <format>{%Author:1|BookAuthor:1|Editor:2%, }{{"%Title%" w }&lt;i&gt;%BookTitle%&lt;/i&gt;{, %Edition:o% ed.}}{, %Editor:2%}.{ %City|StateProvince|CountryRegion%}{, %StateProvince|CountryRegion%}{, %CountryRegion%}{: %Publisher%}{,{ %Month:s%} %Year%}{, vol. %Volume%}{, ch. %ChapterNumber%}{, %Pages:strona :strony  %}{, %Comments%}.{ %URL:l% (ostatni dostęp: %DayAccessed% %MonthAccessed:s% %YearAccessed%)}</format>
         </column>
         <sortkey>{%Author:0|BookAuthor:0|Editor:0%} {%Title:a%} {%BookTitle:a%} {%Year%}</sortkey>
       </source>
@@ -243,7 +243,7 @@
         <column id="2">
           <halign>left</halign>
           <valign>top</valign>
-          <format>{%Author:1%, }{"%Title%,"}{ &lt;i&gt;%JournalName%&lt;/i&gt;}{, vol. %Volume%}{, no. %Issue%}{, %Pages:p. :pp. %}{,{ %Month:s%} %Year%}{, %Comments%}.{ [Online]. %URL:l%}</format>
+          <format>{%Author:1%, }{"%Title%"}{ &lt;i&gt;%JournalName%&lt;/i&gt;}{, vol. %Volume%}{, nr %Issue%}{, %Pages:strona :strony  %}{,{ %Month:s%} %Year%}{, %Comments%}.{ %URL:l% (ostatni dostęp: %DayAccessed% %MonthAccessed:s% %YearAccessed%)}</format>
         </column>
         <sortkey>{%Author:0%} {%Title:a%} {%JournalName%} {%Year%}</sortkey>
       </source>
@@ -256,7 +256,7 @@
         <column id="2">
           <halign>left</halign>
           <valign>top</valign>
-          <format>{%Author:1%, }{"%Title%,"}{ &lt;i&gt;%PeriodicalTitle%&lt;/i&gt;}{, vol. %Volume%}{, no. %Issue%}{, %Pages:p. :pp. %}{,{ %Month:s%} %Year%}{, %Comments%}.{ [Online]. %URL:l%}</format>
+          <format>{%Author:1%, }{"%Title%"}{ &lt;i&gt;%PeriodicalTitle%&lt;/i&gt;}{, vol. %Volume%}{, nr %Issue%}{, %Pages:strona :strony  %}{,{ %Month:s%} %Year%}{, %Comments%}.{ %URL:l% (ostatni dostęp: %DayAccessed% %MonthAccessed:s% %YearAccessed%)}</format>
         </column>
         <sortkey>{%Author:0%} {%Title:a%} {%PeriodicalTitle:a%} {%Year%}</sortkey>
       </source>
@@ -269,7 +269,7 @@
         <column id="2">
           <halign>left</halign>
           <valign>top</valign>
-          <format>{%Author:1%, }{"%Title%," }{in &lt;i&gt;%ConferenceName%&lt;/i&gt;}{, vol. %Volume%}{, %City|StateProvince|CountryRegion%}{, %StateProvince|CountryRegion%}{, %CountryRegion%}{,{ %Month:s%} %Year%}{, %Pages:p. :pp. %}{, %Comments%}.{ [Online]. %URL:l%}</format>
+          <format>{%Author:1%, }{"%Title%" }{w &lt;i&gt;%ConferenceName%&lt;/i&gt;}{, vol. %Volume%}{, %City|StateProvince|CountryRegion%}{, %StateProvince|CountryRegion%}{, %CountryRegion%}{,{ %Month:s%} %Year%}{, %Pages:strona :strony  %}{, %Comments%}.{ %URL:l%  (ostatni dostęp: %DayAccessed% %MonthAccessed:s% %YearAccessed%)}}</format>
         </column>
         <sortkey>{%Author:0%} {%Title:a%} {%ConferenceName%} {%Year%}</sortkey>
       </source>
@@ -282,7 +282,7 @@
         <column id="2">
           <halign>left</halign>
           <valign>top</valign>
-          <format>{%Author:1%, }{"%Title%," }{%Department%, }{%Institution%, }{%City|StateProvince|CountryRegion%, }{%StateProvince|CountryRegion%, }{%CountryRegion%, }{%ThesisType% }{%StandardNumber%, }{{%Month:s%{ %Day%,}} %Year%}.{ [Online]. %URL:l%}</format>
+          <format>{%Author:1%, }{"%Title%" }{%Department%, }{%Institution%, }{%City|StateProvince|CountryRegion%, }{%StateProvince|CountryRegion%, }{%CountryRegion%, }{%ThesisType% }{%StandardNumber%, }{{%Month:s%{ %Day%,}} %Year%}.{ %URL:l% (ostatni dostęp: %DayAccessed% %MonthAccessed:s% %YearAccessed%)}}</format>
         </column>
         <sortkey>{%Author:0%} {%Title:a%} {%Year%}</sortkey>
       </source>
@@ -295,7 +295,7 @@
         <column id="2">
           <halign>left</halign>
           <valign>top</valign>
-          <format>{%Author:1%. }{(%Year%{, %Month:s%})}{ %InternetSiteTitle|Title%.}{ [Online]. %URL:l%}</format>
+          <format>{%Author:1%. }{ %InternetSiteTitle|Title%.}{ %URL:l% (ostatni dostęp: %DayAccessed% %MonthAccessed:s% %YearAccessed%)}</format>
         </column>
         <sortkey>{%Author:0%} {%InternetSiteTitle:a|Title:a%} {%Year%}</sortkey>
       </source>
@@ -308,7 +308,7 @@
         <column id="2">
           <halign>left</halign>
           <valign>top</valign>
-          <format>{%Author:1%. }{(%Year%{, %Month:s%})}{ %InternetSiteTitle|Title%.}{ [Online]. %URL:l%}</format>
+          <format>{%Author:1%. }{(%Year%{, %Month:s%})}{ %InternetSiteTitle|Title%.}{  %URL:l% (ostatni dostęp: %DayAccessed% %MonthAccessed:s% %YearAccessed%)}</format>
         </column>
         <sortkey>{%Author:0%} {%InternetSiteTitle:a|Title:a%} {%Year%}</sortkey>
       </source>
@@ -321,7 +321,7 @@
         <column id="2">
           <halign>left</halign>
           <valign>top</valign>
-          <format>{%Author:1%. }{(%Year%{, %Month:s%})}{ %Title%.}{ %Medium%}.{ [Online]. %URL:l%}</format>
+          <format>{%Author:1%. }{(%Year%{, %Month:s%})}{ %Title%.}{ %Medium%}.{ %URL:l% (ostatni dostęp: %DayAccessed% %MonthAccessed:s% %YearAccessed%)}</format>
         </column>
         <sortkey>{%Author:0%} {%Title:a%} {%Year%}</sortkey>
       </source>
@@ -334,7 +334,7 @@
         <column id="2">
           <halign>left</halign>
           <valign>top</valign>
-          <format>{%Inventor:1|Author:1%, }{"%Title%,"}{ %Type%}{ %PatentNumber%}{,{ %Month:s%{ %Day%,}} %Year%}.</format>
+          <format>{%Inventor:1|Author:1%, }{"%Title%"}{ %Type%}{ %PatentNumber%}{,{ %Month:s%{ %Day%,}} %Year%}.</format>
         </column>
         <sortkey>{%Inventor:0|Author:0%} {%Title:a%} {%Year%}</sortkey>
       </source>
@@ -360,7 +360,7 @@
         <column id="2">
           <halign>left</halign>
           <valign>top</valign>
-          <format>{%Author:1%, }{"%Title%," }{%Institution%, }{%ThesisType% }{%StandardNumber%}{,{ %Month:s%} %Year%}.{ [Online]. %URL:l%}</format>
+          <format>{%Author:1%, }{"%Title%" }{%Institution%, }{%ThesisType% }{%StandardNumber%}{,{ %Month:s%} %Year%}.{ %URL:l%  (ostatni dostęp: %DayAccessed% %MonthAccessed:s% %YearAccessed%)}}</format>
         </column>
         <sortkey>{%Author:0%} {%Title:a%} {%Year%}</sortkey>
       </source>
@@ -373,7 +373,7 @@
         <column id="2">
           <halign>left</halign>
           <valign>top</valign>
-          <format>{%Author:1%, }{"%Title%," }{%ThesisType%, }{%Institution%, }{%City|StateProvince|CountryRegion%}{, %StateProvince|CountryRegion%}{, %CountryRegion%}{, %Year%}.{ [Online]. %URL:l%}</format>
+          <format>{%Author:1%, }{"%Title%" }{%ThesisType%, }{%Institution%, }{%City|StateProvince|CountryRegion%}{, %StateProvince|CountryRegion%}{, %CountryRegion%}{, %Year%}.{ %URL:l% (ostatni dostęp: %DayAccessed% %MonthAccessed:s% %YearAccessed%)}</format>
         </column>
         <sortkey>{%Author:0%} {%Title:a%} {%Year%}</sortkey>
       </source>
@@ -398,14 +398,14 @@
         <single_prefix></single_prefix>
         <multi_prefix></multi_prefix>
         <corporate>{%Corporate%}</corporate>
-        <first_person>{%First:d% }{%Middle:d% }{ %Last%}</first_person>
-        <other_persons>{%First:d% }{%Middle:d% }{ %Last%}</other_persons>
-        <separator_between_if_two> and </separator_between_if_two>
+        <first_person>{%Last%}{ %First:ap%}{ %Middle:ap%}</first_person>
+        <other_persons>{%Last%}{ %First:ap%}{ %Middle:ap%}</other_persons>
+        <separator_between_if_two> i </separator_between_if_two>
         <separator_between_if_more_than_two>, </separator_between_if_more_than_two>
-        <separator_before_last>, and </separator_before_last>
+        <separator_before_last> i </separator_before_last>
         <max_number_of_persons_to_display>5</max_number_of_persons_to_display>
         <number_of_persons_to_display_if_more_than_max>1</number_of_persons_to_display_if_more_than_max>
-        <overflow> et al.</overflow>
+        <overflow> i inni</overflow>
         <single_suffix></single_suffix>
         <multi_suffix></multi_suffix>
       </list>
@@ -413,14 +413,14 @@
         <single_prefix></single_prefix>
         <multi_prefix></multi_prefix>
         <corporate>{%Corporate%}</corporate>
-        <first_person>{%First:d% }{%Middle:d% }{ %Last%}</first_person>
-        <other_persons>{%First:d% }{%Middle:d% }{ %Last%}</other_persons>
-        <separator_between_if_two> and </separator_between_if_two>
+        <first_person>{%Last%}{ %First:ap%}{ %Middle:ap%}</first_person>
+        <other_persons>{%Last%}{ %First:ap%}{ %Middle:ap%}</other_persons>
+        <separator_between_if_two> i </separator_between_if_two>
         <separator_between_if_more_than_two>, </separator_between_if_more_than_two>
-        <separator_before_last>, and </separator_before_last>
+        <separator_before_last> i </separator_before_last>
         <max_number_of_persons_to_display>3</max_number_of_persons_to_display>
         <number_of_persons_to_display_if_more_than_max>1</number_of_persons_to_display_if_more_than_max>
-        <overflow> et al.</overflow>
+        <overflow> i inni</overflow>
         <single_suffix>, Ed.</single_suffix>
         <multi_suffix>, Eds.</multi_suffix>
       </list>
@@ -922,7 +922,7 @@
     <xsl:param name="bibNodeSet"/>
 
     <!-- Empty paragraph hack for table. -->
-    <p class="MsoBibliography" style="display:none;">x</p>
+    <p class="MsoBibliography" style="display:none;"></p>
 
     <table width="100%">
       <xsl:for-each select="$bibNodeSet/b:Bibliography/b:Source">
@@ -939,7 +939,7 @@
     </table>
 
     <!-- Empty paragraph hack for table. -->
-    <p class="MsoBibliography" style="display:none;">x</p>
+    <p class="MsoBibliography" style="display:none;"></p>
 
   </xsl:template>
 
@@ -2374,7 +2374,7 @@
     <!-- A single page number or a range of page numbers. -->
     <xsl:param name="pages"/>
     <!-- Options (single page prefix:multi page prefix:extra options). -->
-    <xsl:param name="options" select="'p. :pp. '"/>
+    <xsl:param name="options" select="'strona :strony  '"/>
 
     <!-- Retrieve the single page prefix. -->
     <xsl:variable name="singlePagePrefix">
